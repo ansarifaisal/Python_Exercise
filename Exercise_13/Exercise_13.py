@@ -1,12 +1,24 @@
+"""
+return a list indian phone number using regex
 
 """
 
-https://www.youtube.com/watch?v=9U4dHBOzmaE&list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME&index=83&ab_channel=CodeWithHarry
+import re
+import os
+from os.path import exists
 
-Task - JSON.load?
+path = input("Please enter path: ")
 
-Task -> what is sort_keys parameter in dumps
+full_path = f"{os.getcwd()}\{path}"
 
-"""
+if not exists(full_path):
+    print("file doesn't exists")
 
-pass
+matches = []
+with open(full_path) as f:
+    for num in f.readlines():
+      x = re.match("^[6-9]{1}\d{9}$", num).string
+      matches.append(x)
+
+print(matches)
+print("Ended.......")
