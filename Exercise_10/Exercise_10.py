@@ -39,9 +39,9 @@ def perform_action(path, folders, files):
         print("Files renamed successfully..")
     
 def take_input():
-    path = "F:\Practice\BasicPython\Exercise_10\Data" # input("provide path: ")
-    ignore_file = "F:\Practice\BasicPython\Exercise_10\ignore.txt" # input("provide ignore file path: ")
-    format_to_work = "txt" # input("provide extension to work with: ")
+    path = input("provide path: ")
+    ignore_file = input("provide ignore file path: ")
+    format_to_work = input("provide extension to work with: ")
     categorize_items(path, ignore_file, format_to_work)
 
 take_input()
