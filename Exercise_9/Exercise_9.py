@@ -20,7 +20,7 @@ def read_files():
     dir_path = "F:\Practice\BasicPython\Exercise_9\Data"
     files = {i: f"{dir_path}\{i}" for i in os.listdir(dir_path) if i.endswith(".txt")}
 
-    if len(files) == 10:
+    if len(files) == 0:
         print("no file found")
         return None
 
