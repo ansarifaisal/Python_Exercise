@@ -9,5 +9,18 @@
     
 
 """
+from time import time;
+import pickle
+init_time = time()
 
-pass
+data = []
+
+with open("Exercise_12\Data_Set.csv") as f:
+    data = f.readlines()
+file = "Exercise_12\data.pkl"
+file_obj = open(file, "wb")
+pickle.dump(data, file_obj)
+file_obj.close()
+
+file_obj = open(file, "rb")
+data_list = pickle.load(file_obj)
