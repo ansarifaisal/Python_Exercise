@@ -1,11 +1,14 @@
-"""
-Akhbaar padh k sunao...
 
+import json
+import requests
+from win32com.client import Dispatch
+from types import SimpleNamespace
 
-NewsAPI
-Pywin32
+speak = Dispatch("SAPI.SpVoice")
+# speak.Speak("Hello World")
 
-"""
+r = requests.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=5621f945a9c746baa86da2f1b394d166")
+data = r.json()
 
-
-pass
+description = data['articles'][0]['description']
+speak.Speak(description)
