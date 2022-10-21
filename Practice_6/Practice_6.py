@@ -26,29 +26,45 @@ def take_input():
     a = int(input("Enter first number: "))
     b = int(input("Enter second number: "))
     random_num = random.randint(a, b)
-    print(random_num)
     action = str(input("Are you ready to start the game? (y/N)"))
     if action.lower() == "y":
         scores = dict(game_start(random_num))
-        reversed_scores = {v: k for k, v in scores.items()}
-        max_score = min(reversed_scores.keys())
-        winner = reversed_scores.get(max_score)
+        print(scores)
+        winner = choose_winner(scores)
         print(f"The winner is Player {winner}")
     else:
         print("It seems you are not interested to play.")
 
 
+def choose_winner(scores):
+    reversed_scores = {v: k for k, v in scores.items()}
+    max_score = min(reversed_scores.keys())
+    winner = reversed_scores.get(max_score)
+    return winner
+
+
 def game_start(random_num):
     scores = {}
     for i in range(no_of_player):
-        tries = 0
-        while True:
-            a = int(input(f"Player {i + 1} - Guess the number: "))
-            if a == random_num:
-                print(f"Number guessed in {tries + 1} tries.")
-                scores[i + 1] = tries + 1
-                break
-            tries += 1
+        scores.update(guess_game(i, random_num))
+    return scores
+
+
+def guess_game(i, random_num):
+    tries = 0
+    scores = {}
+    while True:
+        a = int(input(f"Player {i + 1} - Guess the number: "))
+
+        if a == random_num:
+            print(f"Number guessed in {tries + 1} tries.")
+            scores[i + 1] = tries + 1
+            break
+        elif a > random_num:
+            print(f"Guess the lower number")
+        elif a < random_num:
+            print(f"Guess the higher number")
+        tries += 1
     return scores
 
 
