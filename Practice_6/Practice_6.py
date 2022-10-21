@@ -12,7 +12,7 @@
 
 import random
 
-no_of_player = 2
+no_of_player = int(input("Number of player going to play? "))
 
 
 def main():
